@@ -54,6 +54,7 @@ ln -s ~/.dotfiles/.karabiner_private.xml ~/Library/Application\ Support/Karabine
 brew_cask_install_or_upgrade 'firefox'
 brew_cask_install_or_upgrade 'google-chrome'
 
+brew_cask_install_or_upgrade 'lastpass'
 brew_cask_install_or_upgrade 'dropbox'
 brew_cask_install_or_upgrade 'ynab'
 
