@@ -1,0 +1,88 @@
+#!/bin/sh
+
+# FUNCTIONS
+
+git_clone_or_pull() {
+  local REPOSRC=$1
+  local LOCALREPO=$2
+  local LOCALREPO_VC_DIR=$LOCALREPO/.git
+  if [[ ! -d "$LOCALREPO_VC_DIR" ]]; then
+    git clone --recursive $REPOSRC $LOCALREPO
+  else
+    pushd $LOCALREPO
+    git pull $REPOSRC && git submodule update --init --recursive
+    popd
+  fi
+}
+
+brew_cask_expand_alias() {
+  brew cask info "$1" 2>/dev/null | head -1 | awk '{gsub(/:/, ""); print $1}'
+}
+
+brew_cask_is_installed() {
+  local NAME=$(brew_cask_expand_alias "$1")
+  brew cask list -1 | grep -Fqx "$NAME"
+}
+
+brew_cask_install() {
+  if ! brew_cask_is_installed "$1"; then
+    brew cask install "$@"
+  fi
+}
+
+brew_cask_install_or_upgrade() {
+  if brew_cask_is_installed "$1"; then
+    echo "$1 is already installed, brew cask upgrade is not yet implemented"
+  else
+    brew cask install "$@"
+  fi
+}
+
+# MORE INSTALL
+
+brew_tap 'caskroom/cask'
+brew_install_or_upgrade 'brew-cask'
+
+brew_cask_install_or_upgrade 'iterm2'
+brew_cask_install_or_upgrade 'alfred'
+brew_install_or_upgrade 'direnv'
+brew_cask_install_or_upgrade 'imageoptim'
+brew_install_or_upgrade 'mackup'
+brew_cask_install_or_upgrade 'karabiner'
+ln -s ~/.dotfiles/.karabiner_private.xml ~/Library/Application\ Support/Karabiner/private.xml
+
+brew_cask_install_or_upgrade 'firefox'
+brew_cask_install_or_upgrade 'google-chrome'
+
+brew_cask_install_or_upgrade 'dropbox'
+brew_cask_install_or_upgrade 'ynab'
+
+brew_cask_install_or_upgrade 'slack'
+brew_cask_install_or_upgrade 'gitter'
+brew_cask_install_or_upgrade 'spotify'
+brew_cask_install_or_upgrade 'rdio'
+
+brew_cask_install_or_upgrade 'font-source-code-pro-for-powerline'
+
+git_clone_or_pull 'git://github.com/robbyrussell/oh-my-zsh.git' '.oh-my-zsh'
+
+if xcode-select --install ; then
+   read -p "Wait for xcode command line tools to install, then press any key to continue... " -n1 -s
+fi
+gem_install_or_update 'rails'
+
+brew_install_or_upgrade 'python'
+brew_install_or_upgrade 'python3'
+pip2 install --user --upgrade neovim
+pip3 install --user --upgrade neovim
+
+brew_tap neovim/neovim
+brew reinstall --HEAD neovim
+
+fancy_echo "Setting up .vim/"
+git_clone_or_pull "git@github.com:feedthebayer/dot_vim.git" ".vim"
+cd .vim
+./scripts/setup
+#.osx.vim is managed by rcm in dotfiles
+ln -s ~/.osx.vim ~/.vim/vundle_plugins/custom/osx.vim
+

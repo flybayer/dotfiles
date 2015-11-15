@@ -1,0 +1,9 @@
+#compdef git-poooosh
+
+ref=$(git symbolic-ref HEAD 2> /dev/null)
+
+if [[ -n $ref ]]; then
+  if (( CURRENT == 2 )); then
+    compadd `git branch | sed "s/[\* ]//g"`
+  fi
+fi

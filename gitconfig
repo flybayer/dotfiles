@@ -1,0 +1,19 @@
+[user]
+	name = Brandon Bayer
+	email = b@bayer.ws
+[color]
+	ui = always
+[credential]
+	helper = osxkeychain
+[push]
+	default = simple
+[core]
+	autocrlf = input
+	editor = /usr/local/bin/nvim
+	excludesfile = /Users/b/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
