@@ -10,7 +10,8 @@ alias nv="nvim"
 alias e="ember"
 alias eg="ember g"
 
-alias b="bundle"
+alias bu="bundle"
+alias bo="bower"
 alias ng="noglob"
 
 #quickly jump to a project folder in ~/c/
