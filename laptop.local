@@ -78,6 +78,8 @@ brew_install_or_upgrade 'python3'
 pip2 install --user --upgrade neovim
 pip3 install --user --upgrade neovim
 
+brew_install_or_upgrade 'watchman'
+
 brew_tap neovim/neovim
 brew reinstall --HEAD neovim
 
