@@ -10,7 +10,7 @@
 [core]
 	autocrlf = input
 	editor = /usr/local/bin/nvim
-	excludesfile = /Users/b/.gitignore_global
+	excludesfile = /Users/b/.gitignore
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
