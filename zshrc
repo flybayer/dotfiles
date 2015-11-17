@@ -7,8 +7,6 @@ ZSH_THEME="avit"
 # sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-ENABLE_CORRECTION="true"
-
 COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
