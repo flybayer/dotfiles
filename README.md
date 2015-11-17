@@ -12,7 +12,7 @@
 
 1. Create `.laptop.local` link
 
-        ln -s ~/.dotfiles/laptop.local ~/.laptop.local
+        ln -s ~/.dotfiles/host-osx/laptop.local ~/.laptop.local
 
 1. Download & run [thoughtbot's laptop script][] to install and configure all your apps
 1. Set up dotfiles *(using [rcm][])*
@@ -22,7 +22,7 @@
 
    1. Link the dotfiles
 
-            rcup
+            rcup -vB osx
 
 1. Compile YouCompleteMe for use with NeoVim
 
