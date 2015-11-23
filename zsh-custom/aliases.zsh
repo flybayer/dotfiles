@@ -1,10 +1,17 @@
 alias c="clear"
 alias ping="ping -o"
 
-alias gbd="git branch -d"
 alias gs="git status"
+alias gcam='git commit -am'
+alias gmn='git merge --no-ff'
+alias gbd="git branch -d"
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset %C(bold blue)<%an>%Creset %Cgreen(%cr)%C(yellow)%d%Creset%n%s'"
 alias gu="git pull"
+
+#Copy latest git commit
+alias cgc='git log -1 --pretty=format:%H | xsel -b'
+
+alias cdvim='cd ~/.vim'
 
 alias nv="nvim"
 alias e="ember"

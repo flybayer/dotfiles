@@ -16,9 +16,13 @@
 
 1. Download & run [thoughtbot's laptop script][] to install and configure all your apps
 1. Set up dotfiles *(using [rcm][])*
+   1. Link the rcm config only
+
+            rcup -v rcrc
+
    1. Do a dry run to see which files will be symlinked
 
-            lsrc
+            lsrc -B osx
 
    1. Link the dotfiles
 

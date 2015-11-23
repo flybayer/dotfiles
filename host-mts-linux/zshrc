@@ -24,15 +24,9 @@ COMPLETION_WAITING_DOTS="true"
 # aliases are in ZSH_CUSTOM/aliases.zsh
 
 ZSH_THEME="bayer"
-plugins=(git rails rake ruby git-poooosh heroku postgres bundler gem pow brew)
+plugins=(git git-poooosh)
 source $ZSH/oh-my-zsh.sh
 
-export PATH="/Users/b/.rbenv/shims:/usr/local/bin:/Users/b/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-# export MANPATH="/usr/local/man:$MANPATH"
-
-test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
-
-eval "$(rbenv init - zsh --no-rehash)"
-eval "$(direnv hook zsh)"
-
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+source "$HOME/.bash_profile"
 
