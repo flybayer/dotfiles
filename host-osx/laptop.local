@@ -64,6 +64,7 @@ brew_cask_install_or_upgrade 'gitter'
 brew_cask_install_or_upgrade 'spotify'
 brew_cask_install_or_upgrade 'rdio'
 
+brew_install_or_upgrade 'ssh-copy-id'
 brew_cask_install_or_upgrade 'font-source-code-pro-for-powerline'
 
 git_clone_or_pull 'git://github.com/robbyrussell/oh-my-zsh.git' '.oh-my-zsh'
