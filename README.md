@@ -8,7 +8,7 @@
 1. [Generate SSH keys and add them to GitHub](https://help.github.com/articles/generating-ssh-keys/)
 1. Clone this repo
 
-        git clone git@github.com:feedthebayer/dotfiles.git ~/.dotfiles
+        git clone git@github.com:flybayer/dotfiles.git ~/.dotfiles
 
 1. Create `.laptop.local` link
 
