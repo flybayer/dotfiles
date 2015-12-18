@@ -9,7 +9,9 @@ alias gl="git log --graph --pretty=format:'%Cred%h%Creset %C(bold blue)<%an>%Cre
 alias gu="git pull --rebase"
 
 #Copy latest git commit
-alias cgc='git log -1 --pretty=format:%H | xsel -b'
+alias cgc='git log -1 --format=%H | xsel -b'
+#Copy latest git commit message
+alias cgm='git log -1 --format=%B | xsel -b'
 
 alias cdvim='cd ~/.vim'
 
