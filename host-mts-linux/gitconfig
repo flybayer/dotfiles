@@ -1,5 +1,5 @@
 [user]
-  name = Brandon Bayer
+	name = Brandon Bayer\n
   email = bbayer@multitech.com
 [core]
   editor = nvim
