@@ -1,5 +1,5 @@
 " Setup for gist-vim
-let g:github_user = "feedthebayer"
+let g:github_user = "flybayer"
 
 
 " Set tab width for specific file types
