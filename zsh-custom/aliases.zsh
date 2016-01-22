@@ -23,6 +23,17 @@ alias bu="bundle"
 alias bo="bower"
 alias ng="noglob"
 
+alias ssh.1="ssh admin@192.168.2.1"
+alias ssh.2="ssh admin@192.168.2.2"
+alias ssh.3="ssh admin@192.168.2.3"
+alias ssh.4="ssh admin@192.168.2.4"
+alias ssh.5="ssh admin@192.168.2.5"
+alias ssh.6="ssh admin@192.168.2.6"
+alias ssh.7="ssh admin@192.168.2.7"
+alias ssh.8="ssh admin@192.168.2.8"
+alias ssh.9="ssh admin@192.168.2.9"
+alias sshj="ssh bbayer@jeff.dc.multitech.prv"
+
 #quickly jump to a project folder in ~/c/
 go() { cd ~/c/$1; }
     _go() { _files -W ~/c -/; }
