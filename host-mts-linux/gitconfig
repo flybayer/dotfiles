@@ -1,5 +1,5 @@
 [user]
-	name = Brandon Bayer\n
+  name = Brandon Bayer
   email = bbayer@multitech.com
 [core]
   editor = nvim
@@ -14,5 +14,5 @@
 [push]
   default = simple
 [github]
-  user = feedthebayer
+  user = flybayer
 

@@ -16,6 +16,8 @@ alias cgm='git log -1 --pretty=format:%B | xsel -b'
 
 alias cdvim='cd ~/.vim'
 
+alias vi="nvim"
+alias vim="nvim"
 alias nv="nvim"
 alias e="ember"
 alias eg="ember g"
