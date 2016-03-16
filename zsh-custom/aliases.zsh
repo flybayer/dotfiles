@@ -4,7 +4,7 @@ alias gs="git status"
 alias gcam='git commit -am'
 alias gmn='git merge --no-ff'
 alias gbd="git branch -d"
-alias gl="git log --graph --pretty=format:'%Cred%h%Creset %C(bold blue)<%an>%Creset %Cgreen(%cr)%C(yellow)%d%Creset%n%s'"
+alias gl="git log --graph --pretty=format:'%C(yellow)%s%Creset%n%an %C(blue)%cr%Creset %h%C(red)%d%Creset ' --numstat"
 alias gu="git pull --rebase"
 #Only see changed words, not lines
 alias gd="git diff --color-words"
