@@ -36,8 +36,3 @@ alias ssh.7="ssh admin@192.168.2.7"
 alias ssh.8="ssh admin@192.168.2.8"
 alias ssh.9="ssh admin@192.168.2.9"
 alias sshj="ssh bbayer@jeff.dc.multitech.prv"
-
-#quickly jump to a project folder in ~/c/
-go() { cd ~/c/$1; }
-    _go() { _files -W ~/c -/; }
-        compdef _go go

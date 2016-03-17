@@ -1,11 +1,11 @@
 export EDITOR='nvim'
 
-
 # ------------------------------------
 #            FZF Config
 # ------------------------------------
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_CTRL_T_COMMAND='ag -g ""'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Open selected file with default editor
 nvf() {
@@ -37,4 +37,16 @@ glf() {
 FZF-EOF"
 }
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Bookmarks! - add full file paths to ~/.bookmarks then invoke with go command
+go() {
+   local dest_dir=$(cat ~/.bookmarks | sed 's/#.*//g' | sed '/^\s*$/d' | fzf-tmux )
+   if [[ $dest_dir != '' ]]; then
+      cd "$dest_dir"
+   fi
+}
+export -f go > /dev/null
+
+# Add current directory to bookmarks
+bookmark () {
+    echo "${PWD} # $*" >> ~/.bookmarks
+}
