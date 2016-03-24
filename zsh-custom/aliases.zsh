@@ -1,3 +1,5 @@
+# Make aliases work with sudo
+alias sudo='sudo '
 alias c="clear"
 
 alias gs="git status"
@@ -8,6 +10,8 @@ alias gl="git log --graph --pretty=format:'%C(yellow)%s%Creset%n%an %C(blue)%cr%
 alias gu="git pull --rebase"
 #Only see changed words, not lines
 alias gd="git diff --color-words"
+alias gsmi="git submodule update --init"
+alias gsmu="git submodule update --remote"
 
 #Copy latest git commit
 alias cgc='git log -1 --pretty=format:%H | xsel -b'
@@ -36,3 +40,5 @@ alias ssh.7="ssh admin@192.168.2.7"
 alias ssh.8="ssh admin@192.168.2.8"
 alias ssh.9="ssh admin@192.168.2.9"
 alias sshj="ssh bbayer@jeff.dc.multitech.prv"
+
+alias sshr="ssh-keygen -f '/home/bbayer/.ssh/known_hosts' -R"
