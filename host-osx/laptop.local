@@ -15,6 +15,19 @@ git_clone_or_pull() {
   fi
 }
 
+git_clone_or_pull_depth1() {
+  local REPOSRC=$1
+  local LOCALREPO=$2
+  local LOCALREPO_VC_DIR=$LOCALREPO/.git
+  if [[ ! -d "$LOCALREPO_VC_DIR" ]]; then
+    git clone --depth 1 $REPOSRC $LOCALREPO
+  else
+    pushd $LOCALREPO
+    git pull $REPOSRC 
+    popd
+  fi
+}
+
 brew_cask_expand_alias() {
   brew cask info "$1" 2>/dev/null | head -1 | awk '{gsub(/:/, ""); print $1}'
 }
@@ -55,9 +68,22 @@ brew_cask_install_or_upgrade 'firefox'
 brew_cask_install_or_upgrade 'google-chrome'
 brew_cask_install_or_upgrade 'torbrowser'
 
+# Install quick look plugins (https://github.com/sindresorhus/quick-look-plugins)
+brew_cask_install_or_upgrade 'qlcolorcode'
+brew_cask_install_or_upgrade 'qlstephen'
+brew_cask_install_or_upgrade 'qlmarkdown'
+brew_cask_install_or_upgrade 'quicklook-json'
+brew_cask_install_or_upgrade 'qlprettypatch'
+brew_cask_install_or_upgrade 'quicklook-csv'
+brew_cask_install_or_upgrade 'betterzipql'
+brew_cask_install_or_upgrade 'qlimagesize'
+brew_cask_install_or_upgrade 'webpquicklook'
+brew_cask_install_or_upgrade 'suspicious-package'
+
+brew_cask_install_or_upgrade 'gitup'
+
 brew_cask_install_or_upgrade 'lastpass'
 brew_cask_install_or_upgrade 'dropbox'
-brew_cask_install_or_upgrade 'ynab'
 
 brew_cask_install_or_upgrade 'slack'
 brew_cask_install_or_upgrade 'gitter'
