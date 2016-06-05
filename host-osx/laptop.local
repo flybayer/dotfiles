@@ -115,5 +115,5 @@ git_clone_or_pull "git@github.com:flybayer/dot_vim.git" ".vim"
 cd .vim
 ./scripts/setup
 #.osx.vim is managed by rcm in dotfiles
-ln -s ~/.osx.vim ~/.vim/vundle_plugins/custom/osx.vim
+ln -s ~/.osx.vim ~/.vim/plug_ins/custom/osx.vim
 
