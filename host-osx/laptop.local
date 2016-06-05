@@ -111,7 +111,7 @@ brew_tap neovim/neovim
 brew reinstall --HEAD neovim
 
 fancy_echo "Setting up .vim/"
-git_clone_or_pull "git@github.com:feedthebayer/dot_vim.git" ".vim"
+git_clone_or_pull "git@github.com:flybayer/dot_vim.git" ".vim"
 cd .vim
 ./scripts/setup
 #.osx.vim is managed by rcm in dotfiles
