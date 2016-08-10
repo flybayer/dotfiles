@@ -90,10 +90,6 @@ brew_cask_install_or_upgrade 'slack'
 brew_cask_install_or_upgrade 'gitter'
 brew_cask_install_or_upgrade 'gitup'
 
-brew_cask_install_or_upgrade 'spotify'
-brew_cask_install_or_upgrade 'rdio'
-brew_cask_install_or_upgrade 'dropbox'
-
 brew bundle --file=- <<EOF
 brew 'ssh-copy-id'
 EOF
