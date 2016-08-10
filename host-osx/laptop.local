@@ -53,16 +53,21 @@ brew_cask_install_or_upgrade() {
 
 # MORE INSTALL
 
-brew_tap 'caskroom/cask'
-brew_install_or_upgrade 'brew-cask'
+brew tap 'caskroom/cask'
+
+brew bundle --file=- <<EOF
+brew 'brew-cask'
+EOF
 
 brew_cask_install_or_upgrade 'iterm2'
 brew_cask_install_or_upgrade 'alfred'
-brew_install_or_upgrade 'direnv'
 brew_cask_install_or_upgrade 'imageoptim'
-brew_install_or_upgrade 'mackup'
 brew_cask_install_or_upgrade 'karabiner'
-ln -s ~/.dotfiles/.karabiner_private.xml ~/Library/Application\ Support/Karabiner/private.xml
+brew bundle --file=- <<EOF
+brew 'direnv'
+brew 'mackup'
+EOF
+ln -s ~/.dotfiles/.karabiner_private.xml ~/Library/Application\ Support/Karabiner/private.xml || true
 
 brew_cask_install_or_upgrade 'firefox'
 brew_cask_install_or_upgrade 'google-chrome'
@@ -80,17 +85,18 @@ brew_cask_install_or_upgrade 'qlimagesize'
 brew_cask_install_or_upgrade 'webpquicklook'
 brew_cask_install_or_upgrade 'suspicious-package'
 
-brew_cask_install_or_upgrade 'gitup'
-
 brew_cask_install_or_upgrade 'lastpass'
-brew_cask_install_or_upgrade 'dropbox'
-
 brew_cask_install_or_upgrade 'slack'
 brew_cask_install_or_upgrade 'gitter'
+brew_cask_install_or_upgrade 'gitup'
+
 brew_cask_install_or_upgrade 'spotify'
 brew_cask_install_or_upgrade 'rdio'
+brew_cask_install_or_upgrade 'dropbox'
 
-brew_install_or_upgrade 'ssh-copy-id'
+brew bundle --file=- <<EOF
+brew 'ssh-copy-id'
+EOF
 brew_cask_install_or_upgrade 'font-source-code-pro-for-powerline'
 
 git_clone_or_pull 'git://github.com/robbyrussell/oh-my-zsh.git' '.oh-my-zsh'
@@ -100,14 +106,15 @@ if xcode-select --install ; then
 fi
 gem_install_or_update 'rails'
 
-brew_install_or_upgrade 'python'
-brew_install_or_upgrade 'python3'
+brew bundle --file=- <<EOF
+brew 'watchman'
+brew 'python'
+brew 'python3'
+EOF
 pip2 install --user --upgrade neovim
 pip3 install --user --upgrade neovim
 
-brew_install_or_upgrade 'watchman'
-
-brew_tap neovim/neovim
+brew tap neovim/neovim
 brew reinstall --HEAD neovim
 
 fancy_echo "Setting up .vim/"
@@ -115,5 +122,5 @@ git_clone_or_pull "git@github.com:flybayer/dot_vim.git" ".vim"
 cd .vim
 ./scripts/setup
 #.osx.vim is managed by rcm in dotfiles
-ln -s ~/.osx.vim ~/.vim/plug_ins/custom/osx.vim
+ln -s ~/.osx.vim ~/.vim/plug_ins/custom/osx.vim || true
 
