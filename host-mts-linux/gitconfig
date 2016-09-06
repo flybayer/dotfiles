@@ -5,12 +5,7 @@
   editor = nvim
   excludesfile = ~/.gitignore
 [color]
-  diff = always
   status = always
-  branch = always
-  interactive = always
-  ui = true
-  pager = true
 [push]
   default = simple
 [github]
