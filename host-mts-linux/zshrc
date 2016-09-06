@@ -24,9 +24,17 @@ COMPLETION_WAITING_DOTS="true"
 # aliases are in ZSH_CUSTOM/aliases.zsh
 
 ZSH_THEME="bayer"
-plugins=(git git-poooosh)
+plugins=(git git-poooosh colored-man-pages tmux tmuxinator)
 source $ZSH/oh-my-zsh.sh
+
+alias golang='/usr/local/go/bin/go'
+
+alias open='nautilus --browser'
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 source "$HOME/.bash_profile"
 
+export DISABLE_AUTO_TITLE=true
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
