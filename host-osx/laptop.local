@@ -59,6 +59,7 @@ brew bundle --file=- <<EOF
 brew 'brew-cask'
 EOF
 
+brew_cask_install_or_upgrade 'hyperterm'
 brew_cask_install_or_upgrade 'iterm2'
 brew_cask_install_or_upgrade 'alfred'
 brew_cask_install_or_upgrade 'imageoptim'
@@ -85,6 +86,7 @@ brew_cask_install_or_upgrade 'qlimagesize'
 brew_cask_install_or_upgrade 'webpquicklook'
 brew_cask_install_or_upgrade 'suspicious-package'
 
+brew_cask_install_or_upgrade 'appcleaner'
 brew_cask_install_or_upgrade 'lastpass'
 brew_cask_install_or_upgrade 'slack'
 brew_cask_install_or_upgrade 'gitter'

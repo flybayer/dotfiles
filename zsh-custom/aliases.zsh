@@ -2,6 +2,8 @@
 alias sudo='sudo '
 alias c="clear"
 
+alias nr="npm run"
+
 alias gs="git status"
 alias gcam='git commit -am'
 alias gmn='git merge --no-ff'
@@ -23,12 +25,6 @@ alias cdvim='cd ~/.vim'
 alias vi="nvim"
 alias vim="nvim"
 alias nv="nvim"
-alias e="ember"
-alias eg="ember g"
-
-alias bu="bundle"
-alias bo="bower"
-alias ng="noglob"
 
 alias ssh.1="ssh admin@192.168.2.1"
 alias ssh.2="ssh admin@192.168.2.2"
