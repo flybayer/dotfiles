@@ -31,7 +31,7 @@ alias golang='/usr/local/go/bin/go'
 
 alias open='nautilus --browser'
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.rvm/bin:$HOME/.cargo/bin" # Add RVM to PATH for scripting
 source "$HOME/.bash_profile"
 
 export DISABLE_AUTO_TITLE=true
