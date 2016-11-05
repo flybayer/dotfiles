@@ -3,6 +3,7 @@ alias sudo='sudo '
 alias c="clear"
 
 alias nr="npm run"
+alias y="yarn"
 
 alias gs="git status"
 alias gcam='git commit -am'
