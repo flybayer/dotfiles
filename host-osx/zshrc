@@ -27,7 +27,7 @@ ZSH_THEME="bayer"
 plugins=(git rails rake ruby git-poooosh heroku postgres bundler gem pow brew)
 source $ZSH/oh-my-zsh.sh
 
-export PATH="/Users/b/.rbenv/shims:/usr/local/bin:/Users/b/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.bin"
+export PATH="/Users/b/.rbenv/shims:/usr/local/bin:/Users/b/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.bin:$HOME/.yarn/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
@@ -40,5 +40,3 @@ eval "$(direnv hook zsh)"
 export NVM_DIR="/Users/b/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-export PATH="$HOME/.bin:$PATH"
-eval "$(rbenv init - --no-rehash)"
