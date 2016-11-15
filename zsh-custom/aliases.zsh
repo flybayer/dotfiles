@@ -4,6 +4,7 @@ alias c="clear"
 
 alias nr="npm run"
 alias y="yarn"
+alias yr="yarn run"
 
 alias gs="git status"
 alias gcam='git commit -am'
