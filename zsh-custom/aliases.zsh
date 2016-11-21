@@ -29,6 +29,8 @@ alias vi="nvim"
 alias vim="nvim"
 alias nv="nvim"
 
+alias rg="rg -S"
+
 alias ssh.1="ssh admin@192.168.2.1"
 alias ssh.2="ssh admin@192.168.2.2"
 alias ssh.3="ssh admin@192.168.2.3"
