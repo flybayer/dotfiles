@@ -2,7 +2,7 @@
 
 *Managed with [rcm][]*
 
-## New machine setup
+## New macOS machine setup
 
 1. Install XCode from the App Store
 1. [Generate SSH keys and add them to GitHub](https://help.github.com/articles/generating-ssh-keys/)
@@ -28,18 +28,13 @@
 
             rcup -vB osx
 
-1. Compile YouCompleteMe for use with NeoVim
 
-        cd ~/.vim/bundle/YouCompleteMe
-        ./install.sh
-
-
-## Set up key remapping
+### Set up key remapping
 
 1. In OSX System Preferences, change Caps Lock to Control
 1. Karabiner should be configured with mackup below
 
-## Restore application settings
+### Restore application settings
 
 If you've already installed the dotfiles with the `rcup` command listed above,
 you'll have `~/.mackup.cfg` installed. Modify this configuration file to include
@@ -55,6 +50,20 @@ with mackup:
 ```
 mackup restore
 ```
+
+## New Linux machine setup
+
+1. [Generate SSH keys and add them to GitHub](https://help.github.com/articles/generating-ssh-keys/)
+1. Clone this repo
+
+        git clone git@github.com:flybayer/dotfiles.git ~/.dotfiles
+        or
+        git clone https://github.com/flybayer/dotfiles.git ~/.dotfiles
+
+1. `Run setup-linux.sh`:
+
+        .dotfiles/host-mts-linux/setup-linux.sh
+
 
 ## Adding new files to the project
 
