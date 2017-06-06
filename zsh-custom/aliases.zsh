@@ -7,6 +7,11 @@ alias y="yarn"
 alias ys="yarn start"
 alias yr="yarn run"
 
+alias cr="cargo run"
+alias ct="cargo test all"
+alias wcr="watchexec --restart 'cargo run'"
+alias wct="watchexec --restart 'cargo test --all'"
+
 alias gs="git status"
 alias gcam='git commit -am'
 alias gmn='git merge --no-ff'
