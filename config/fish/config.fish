@@ -1,10 +1,42 @@
+# function fish_prompt
+#     echo -n '> '
+# end
 
+function fish_prompt --description 'Write out the prompt'
+    set -l color_cwd
+    set -l suffix
+    switch "$USER"
+        case root toor
+            if set -q fish_color_cwd_root
+                set color_cwd $fish_color_cwd_root
+            else
+                set color_cwd $fish_color_cwd
+            end
+            set suffix '#'
+        case '*'
+            set color_cwd $fish_color_cwd
+            set suffix '>'
+    end
+
+    # echo -n -s "$USER" @ (prompt_hostname) ' ' (set_color $color_cwd) (prompt_pwd) (set_color normal) "$suffix "
+    echo -n -s (set_color $color_cwd) (prompt_pwd) (set_color normal) "$suffix "
+end
+
+set fish_greeting ''
 
 alias c="clear"
-alias nv='nvim'
+alias l="ll -a"
+function nv
+  bash -c "nvim $argv"
+end
 alias nr="npm run"
 alias y="yarn"
 alias ys="yarn start"
+
+alias t="tree -CI 'node_modules|dist'"
+alias tree="tree -C"
+
+alias headers="curl -I -s -X GET"
 
 alias rg="rg -S"
 
@@ -60,12 +92,34 @@ alias grbi='git rebase -i'
 alias gsu='git submodule update'
 
 
+function fork
+  set args (string split "/" $argv[1])
+  set user $args[1]
+  set repo $args[2]
 
-
-
-
-function nvm
-  bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
+  git clone git@github.com:flybayer/$repo.git
+  cd $repo
+  git remote add upstream git@github.com:$argv[1].git
+  git fetch --all
 end
 
-rvm default
+
+set -x EDITOR nvim
+set -x FZF_LEGACY_KEYBINDINGS 1
+set -x FZF_TMUX 1
+set -gx FZF_DEFAULT_COMMAND 'ag --ignore flow-typed -g ""'
+set -gx FZF_FIND_FILE_COMMAND "$FZF_DEFAULT_COMMAND"
+
+set -x PGDATA /usr/local/var/postgres/
+set -e PREFIX # Fix React-native metro bundler
+set -x ANDROID_HOME $HOME/Library/Android/sdk
+
+set -x fish_user_paths $ANDROID_HOME/emulator $ANDROID_HOME/tools $ANDROID_HOME/tools/bin $ANDROID_HOME/platform-tools $fish_user_paths
+
+function __direnv_export_eval --on-event fish_prompt;
+        eval (direnv hook fish);
+end
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[ -f /Users/b/.config/yarn/global/node_modules/tabtab/.completions/electron-forge.fish ]; and . /Users/b/.config/yarn/global/node_modules/tabtab/.completions/electron-forge.fish

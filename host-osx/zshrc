@@ -40,3 +40,6 @@ eval "$(direnv hook zsh)"
 export NVM_DIR="/Users/b/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
+
+# added by travis gem
+[ -f /Users/b/.travis/travis.sh ] && source /Users/b/.travis/travis.sh
