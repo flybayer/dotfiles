@@ -27,7 +27,7 @@ set fish_greeting ''
 alias c="clear"
 alias l="ll -a"
 function nv
-  bash -c "nvim $argv"
+  bash -c "SHELL=/bin/bash nvim $argv"
 end
 alias nr="npm run"
 alias y="yarn"
@@ -114,7 +114,7 @@ set -x PGDATA /usr/local/var/postgres/
 set -e PREFIX # Fix React-native metro bundler
 set -x ANDROID_HOME $HOME/Library/Android/sdk
 
-set -x fish_user_paths $ANDROID_HOME/emulator $ANDROID_HOME/tools $ANDROID_HOME/tools/bin $ANDROID_HOME/platform-tools $fish_user_paths
+set -x fish_user_paths $ANDROID_HOME/emulator $ANDROID_HOME/tools $ANDROID_HOME/tools/bin $ANDROID_HOME/platform-tools $HOME/.fastlane/bin $fish_user_paths
 
 function __direnv_export_eval --on-event fish_prompt;
         eval (direnv hook fish);
