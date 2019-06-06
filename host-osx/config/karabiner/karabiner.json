@@ -6,60 +6,100 @@
     },
     "profiles": [
         {
-          "complex_modifications": {
-            "rules": [
-              {
-                "description": "A Modern Space Cadet (Steve Losh)",
-                "manipulators": [
-                  {
-                    "type": "basic",
-                    "from": {"key_code": "caps_lock"},
-                    "to": [{"key_code": "left_control"}],
-                    "to_if_alone": [{"key_code": "escape"}]
-                  },
-                  {
-                    "type": "basic",
-                    "from": {"key_code": "left_shift"},
-                    "to": [{"key_code": "left_shift"}],
-                    "to_if_alone": [{"key_code": "9", "modifiers": ["left_shift"]}]
-                  },
-                  {
-                    "type": "basic",
-                    "from": {"key_code": "right_shift"},
-                    "to": [{"key_code": "right_shift"}],
-                    "to_if_alone": [{"key_code": "0", "modifiers": ["right_shift"]}]
-                  }
-                ]
-              },
-              {
-                "manipulators": [
-                  {
-                    "description": "Change Tab to Hyper",
-                    "type": "basic",
-                    "from": {
-                      "key_code": "tab",
-                      "modifiers": {
-                        "optional": [
-                          "any"
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "A Modern Space Cadet (Steve Losh)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "caps_lock"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_control"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "escape"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "left_shift"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "9",
+                                        "modifiers": [
+                                            "left_shift"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "right_shift"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_shift"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "0",
+                                        "modifiers": [
+                                            "right_shift"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
                         ]
-                      }
                     },
-                    "to": [
-                      {
-                        "key_code": "left_shift",
-                        "modifiers": [
-                          "left_command",
-                          "left_control",
-                          "left_option"
+                    {
+                        "manipulators": [
+                            {
+                                "description": "Change Tab to Hyper",
+                                "from": {
+                                    "key_code": "tab",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": [
+                                            "left_command",
+                                            "left_control",
+                                            "left_option"
+                                        ]
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "tab"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
                         ]
-                      }
-                    ],
-                    "to_if_alone": [{"key_code": "tab"}]
-                  }
+                    }
                 ]
-              }
-            ]
-          },
+            },
             "devices": [],
             "fn_function_keys": {
                 "f1": "display_brightness_decrement",
