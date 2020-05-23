@@ -38,12 +38,14 @@ alias nr="npm run"
 
 alias y="yarn"
 alias ys="yarn start"
+alias yt="yarn test"
 
 alias r="bin/rails"
-alias rt="env HIDE_EXAMPLES=true bin/rails test"
+alias rc="bin/rails console"
+alias rt="bin/rails test"
 alias be="bundle exec"
 
-alias t="tree -CI 'node_modules|dist'"
+alias t="tree -CI 'node_modules|dist|migrations|tmp|coverage|target'"
 alias tree="tree -C"
 
 alias headers="curl -I -s -X GET"
@@ -67,6 +69,8 @@ alias cgm='git log -1 --pretty=format:%B | xsel -b'
 
 alias g='git'
 alias gs="git status"
+alias ghpc="gh pr checkout"
+
 #Only see changed words, not lines
 alias gd="git diff --color-words"
 alias gl="git log --graph --pretty=format:'%C(yellow)%s%Creset%n%an %C(blue)%cr%Creset %h%C(red)%d%Creset ' --numstat"
@@ -89,6 +93,7 @@ alias gcb='git checkout -b'
 alias gcf='git config --list'
 alias gclean='git clean -fd'
 alias gcm='git checkout master'
+alias gcc='git checkout canary'
 alias gco='git checkout'
 alias gcp='git cherry-pick'
 alias gcpa='git cherry-pick --abort'
@@ -117,7 +122,7 @@ function fork
 end
 
 function gpu
-   set branch_name (git branch --color=never | grep \* | cut -d ' ' -f2)
+   set branch_name (git branch --color=never | grep \* | cut -d ' ' -f2) $argv
    gp -u origin $branch_name
 end
 
@@ -133,10 +138,33 @@ end
 set -x EDITOR nvim
 set -x FZF_LEGACY_KEYBINDINGS 1
 set -x FZF_TMUX 1
-set -gx FZF_DEFAULT_COMMAND 'ag --ignore flow-typed -g ""'
+# set -gx FZF_DEFAULT_COMMAND 'ag --ignore flow-typed --ignore Pods -g ""'
+set -x FZF_DEFAULT_COMMAND 'fd --type f --hidden -E .git -E node_modules'
 set -gx FZF_FIND_FILE_COMMAND "$FZF_DEFAULT_COMMAND"
 
 set -gx N_PREFIX $HOME/n
+
+# fnm for node version management
+set -gx PATH /var/folders/dn/t7l73r1d08q_0djz0hz06bt80000gn/T/fnm-shell-7340312/bin $PATH;
+set -gx FNM_MULTISHELL_PATH /var/folders/dn/t7l73r1d08q_0djz0hz06bt80000gn/T/fnm-shell-7340312;
+set -gx FNM_DIR /Users/b/.fnm/;
+set -gx FNM_NODE_DIST_MIRROR https://nodejs.org/dist
+set -gx FNM_LOGLEVEL info
+
+# Run on terminal load
+fnm use default > /dev/null
+
+function _fnm_autoload_hook --on-variable PWD --description 'Change Node version on directory change'
+  status --is-command-substitution; and return
+  if test -f .node-version
+    echo "fnm: Found .node-version"
+    fnm use
+  else if test -f .nvmrc
+    echo "fnm: Found .nvmrc"
+    fnm use
+  end
+end
+
 
 set -x PGDATA /usr/local/var/postgres/
 set -e PREFIX # Fix React-native metro bundler
@@ -144,11 +172,14 @@ set -x ANDROID_HOME $HOME/Library/Android/sdk
 set -x DISABLE_SPRING 1
 
 # qt@5.5 in path because it's needed by capybara-webkit which is used by bullettrain
-set -x fish_user_paths $ANDROID_HOME/emulator $ANDROID_HOME/tools $ANDROID_HOME/tools/bin $ANDROID_HOME/platform-tools $HOME/.fastlane/bin $fish_user_paths $N_PREFIX/bin $HOME/.rbenv/bin /usr/local/opt/qt@5.5/bin
+set -x fish_user_paths $ANDROID_HOME/emulator $ANDROID_HOME/tools $ANDROID_HOME/tools/bin $ANDROID_HOME/platform-tools $HOME/.fastlane/bin $N_PREFIX/bin $HOME/.rbenv/bin /usr/local/opt/qt@5.5/bin $HOME/.fzf/bin $HOME/.cargo/bin
 
 status --is-interactive; and source (rbenv init -|psub)
 
 function __direnv_export_eval --on-event fish_prompt;
         eval (direnv hook fish);
 end
+
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
 
