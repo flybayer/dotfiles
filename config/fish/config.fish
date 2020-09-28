@@ -92,7 +92,7 @@ alias gca!='git commit -v -a --amend'
 alias gcb='git checkout -b'
 alias gcf='git config --list'
 alias gclean='git clean -fd'
-alias gcm='git checkout master'
+alias gcm='git checkout main 2> /dev/null || git checkout master'
 alias gcc='git checkout canary'
 alias gco='git checkout'
 alias gcp='git cherry-pick'
@@ -145,14 +145,14 @@ set -gx FZF_FIND_FILE_COMMAND "$FZF_DEFAULT_COMMAND"
 set -gx N_PREFIX $HOME/n
 
 # fnm for node version management
-set -gx PATH /var/folders/dn/t7l73r1d08q_0djz0hz06bt80000gn/T/fnm-shell-7340312/bin $PATH;
-set -gx FNM_MULTISHELL_PATH /var/folders/dn/t7l73r1d08q_0djz0hz06bt80000gn/T/fnm-shell-7340312;
+set -gx PATH /var/folders/gf/xyzbs8n52kz_sxxvpw2psh1r0000gn/T/fnm-shell-5751353/bin $PATH;
+set -gx FNM_MULTISHELL_PATH /var/folders/gf/xyzbs8n52kz_sxxvpw2psh1r0000gn/T/fnm-shell-5751353;
 set -gx FNM_DIR /Users/b/.fnm/;
 set -gx FNM_NODE_DIST_MIRROR https://nodejs.org/dist
 set -gx FNM_LOGLEVEL info
 
 # Run on terminal load
-fnm use default > /dev/null
+fnm use 2> /dev/null || fnm use default  > /dev/null
 
 function _fnm_autoload_hook --on-variable PWD --description 'Change Node version on directory change'
   status --is-command-substitution; and return
@@ -178,6 +178,9 @@ status --is-interactive; and source (rbenv init -|psub)
 
 function __direnv_export_eval --on-event fish_prompt;
         eval (direnv hook fish);
+end
+function __fnm_eval --on-event fish_prompt;
+        fnm use > /dev/null 2>&1
 end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
