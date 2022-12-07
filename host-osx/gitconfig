@@ -9,7 +9,7 @@
 	default = simple
 [core]
 	autocrlf = input
-	editor = /usr/local/bin/nvim
+	editor = /opt/homebrew/bin/nvim
 	excludesfile = /Users/b/.gitignore
 [diff]
   compactionHeuristic = true
@@ -21,3 +21,15 @@
 	trustExitCode = true
 [init]
 	defaultBranch = main
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red reverse
+	newNormal = green bold
+	newHighlight = green reverse
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse

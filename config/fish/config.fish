@@ -37,15 +37,31 @@ alias ns="npm start"
 alias nr="npm run"
 
 alias y="yarn"
+alias yd="yarn dev"
+alias yb="yarn build"
 alias ys="yarn start"
 alias yt="yarn test"
+
+alias b="blitz"
+alias bd="blitz dev"
+alias bb="blitz build"
+alias bs="blitz start"
+alias bpg="blitz prisma generate"
+
+alias p="pnpm"
+alias pi="pnpm install"
+alias pd="pnpm dev"
+alias pb="pnpm build"
+# alias ps="pnpm start"
+alias pt="pnpm test"
+alias px="pnpx"
 
 alias r="bin/rails"
 alias rc="bin/rails console"
 alias rt="bin/rails test"
 alias be="bundle exec"
 
-alias t="tree -CI 'node_modules|dist|migrations|tmp|coverage|target'"
+alias t="tree -CI 'node_modules|dist|migrations|tmp|coverage|target|out'"
 alias tree="tree -C"
 
 alias headers="curl -I -s -X GET"
@@ -77,7 +93,7 @@ alias gl="git log --graph --pretty=format:'%C(yellow)%s%Creset%n%an %C(blue)%cr%
 alias gu='git pull --rebase'
 alias ga='git add'
 alias gaa='git add --all'
-alias gb='git branch'
+alias gb='git branch --sort=-committerdate'
 alias gba='git branch -a'
 alias gbd='git branch -d'
 alias gbs='git bisect'
@@ -120,10 +136,24 @@ function fork
   git remote add upstream git@github.com:$argv[1].git
   git fetch --all
 end
+function forkb
+  set args (string split "/" $argv[1])
+  set user $args[1]
+  set repo $args[2]
+
+  git clone git@github.com:blitz-js/$repo.git
+  cd $repo
+  git remote add upstream git@github.com:$argv[1].git
+  git fetch --all
+end
 
 function gpu
    set branch_name (git branch --color=never | grep \* | cut -d ' ' -f2) $argv
-   gp -u origin $branch_name
+   if test "$branch_name" = "main"
+    echo "Error: You are on the main branch"
+   else
+    gp -u origin $branch_name
+   end
 end
 
 function gpd
@@ -144,12 +174,7 @@ set -gx FZF_FIND_FILE_COMMAND "$FZF_DEFAULT_COMMAND"
 
 set -gx N_PREFIX $HOME/n
 
-# fnm for node version management
-set -gx PATH /var/folders/gf/xyzbs8n52kz_sxxvpw2psh1r0000gn/T/fnm-shell-5751353/bin $PATH;
-set -gx FNM_MULTISHELL_PATH /var/folders/gf/xyzbs8n52kz_sxxvpw2psh1r0000gn/T/fnm-shell-5751353;
-set -gx FNM_DIR /Users/b/.fnm/;
-set -gx FNM_NODE_DIST_MIRROR https://nodejs.org/dist
-set -gx FNM_LOGLEVEL info
+fnm env | source
 
 # Run on terminal load
 fnm use 2> /dev/null || fnm use default  > /dev/null
@@ -172,7 +197,7 @@ set -x ANDROID_HOME $HOME/Library/Android/sdk
 set -x DISABLE_SPRING 1
 
 # qt@5.5 in path because it's needed by capybara-webkit which is used by bullettrain
-set -x fish_user_paths $ANDROID_HOME/emulator $ANDROID_HOME/tools $ANDROID_HOME/tools/bin $ANDROID_HOME/platform-tools $HOME/.fastlane/bin $N_PREFIX/bin $HOME/.rbenv/bin /usr/local/opt/qt@5.5/bin $HOME/.fzf/bin $HOME/.cargo/bin
+set -x fish_user_paths $ANDROID_HOME/emulator $ANDROID_HOME/tools $ANDROID_HOME/tools/bin $ANDROID_HOME/platform-tools $HOME/.fastlane/bin $N_PREFIX/bin $HOME/.rbenv/bin /usr/local/opt/qt@5.5/bin $HOME/.fzf/bin $HOME/.cargo/bin /opt/homebrew/bin /opt/homebrew/sbin /Users/b/go/bin
 
 status --is-interactive; and source (rbenv init -|psub)
 
@@ -186,3 +211,21 @@ end
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
 
+source ~/c/installs/git-subrepo/.fish.rc
+
+set -gx HOMEBREW_PREFIX "/opt/homebrew";
+set -gx HOMEBREW_CELLAR "/opt/homebrew/Cellar";
+set -gx HOMEBREW_REPOSITORY "/opt/homebrew";
+set -gx HOMEBREW_SHELLENV_PREFIX "/opt/homebrew";
+set -q MANPATH; or set MANPATH ''; set -gx MANPATH "/opt/homebrew/share/man" $MANPATH;
+set -q INFOPATH; or set INFOPATH ''; set -gx INFOPATH "/opt/homebrew/share/info" $INFOPATH;
+
+set -gx PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+set -gx PUPPETEER_EXECUTABLE_PATH "which chromium"
+
+set -gx GOPATH "/Users/b/go"
+
+# pnpm
+set -gx PNPM_HOME "/Users/b/Library/pnpm"
+set -gx PATH "$PNPM_HOME" $PATH
+# pnpm end

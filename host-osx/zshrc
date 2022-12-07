@@ -25,7 +25,7 @@ COMPLETION_WAITING_DOTS="true"
 
 ZSH_THEME="bayer"
 plugins=(git rails rake ruby git-poooosh heroku postgres bundler gem pow brew)
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 export PATH="/Users/b/.rbenv/shims:/usr/local/bin:/Users/b/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.bin:$HOME/.yarn/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -43,3 +43,8 @@ export NVM_DIR="/Users/b/.nvm"
 
 # added by travis gem
 [ -f /Users/b/.travis/travis.sh ] && source /Users/b/.travis/travis.sh
+export PATH="/var/folders/gf/xyzbs8n52kz_sxxvpw2psh1r0000gn/T/fnm_multishell_53393_1613001080124/bin":$PATH
+export FNM_MULTISHELL_PATH="/var/folders/gf/xyzbs8n52kz_sxxvpw2psh1r0000gn/T/fnm_multishell_53393_1613001080124"
+export FNM_DIR="/Users/b/.fnm/"
+export FNM_LOGLEVEL="info"
+export FNM_NODE_DIST_MIRROR="https://nodejs.org/dist"
